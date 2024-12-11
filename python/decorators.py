@@ -25,7 +25,7 @@ from typing import Any, TypeVar, ParamSpec
 
 P = ParamSpec("P")
 R = TypeVar("R")
-type AR = dict[str, Any]  # Analysis result for code complexity
+type Result = dict[str, Any]  # Analysis result for code complexity
 
 
 # -- Functions ------------------------------------------------------------------
@@ -64,12 +64,12 @@ def complexity(func: Callable[P, R]) -> float:
     return 1 + analyse(tree)
 
 
-def antipatterns(func: Callable[P, R]) -> AR:
+def antipatterns(func: Callable[P, R]) -> Result:
     """
     Analyse functions for potential anti-patterns using pattern matching.
 
     :param func (Callable): Function to analyse
-    :return AR: Dictionary of detected anti-patterns
+    :return Result: Dictionary of detected anti-patterns
     """
     tree = ast.parse(inspect.getsource(func))
     source = inspect.getsource(func).splitlines()
@@ -123,11 +123,11 @@ def antipatterns(func: Callable[P, R]) -> AR:
     }
 
 
-def compatibility() -> AR:
+def compatibility() -> Result:
     """
     Analyse system and version compatibility.
 
-    :return AR: System and version information
+    :return Result: System and version information
     """
     return {
         "python_version": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
