@@ -202,7 +202,7 @@ def copilot(
 """
 Example usage
 
-@copilot(verbose=True)
+@copilot()
 def example(x: int, y: int) -> int:
     "Demo."
     result = 0
