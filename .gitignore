@@ -4,3 +4,4 @@
 
 # Python things
 __pycache__/
+dist/
