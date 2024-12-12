@@ -1,6 +1,6 @@
 """
 -*- Not to be run as a standalone program
--*- Minimum python version: 3.12
+-*- Minimum python version: 3.10
 
 Decorators and functions to wrap code written by or with LLM support.
 
