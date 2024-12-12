@@ -31,7 +31,6 @@
             buildInputs = (
               with pkgs;
               [
-                pkgs.python312Packages.jupyter
                 pkgs.ruff
               ]
             );
@@ -44,6 +43,7 @@
             pkgs.python312
             pkgs.poetry
             pkgs.python312Packages.python-lsp-ruff
+            pkgs.python312Packages.ipython
           ];
         };
       }

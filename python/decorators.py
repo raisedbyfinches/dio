@@ -19,16 +19,24 @@ import warnings
 
 # named
 from collections.abc import Callable
-from typing import Any, TypeVar, ParamSpec
+from typing import Any, TypeVar, ParamSpec, TypeAlias
+
 
 # -- Types ----------------------------------------------------------------------
 
+
 P = ParamSpec("P")
 R = TypeVar("R")
-type Result = dict[str, Any]  # Analysis result for code complexity
+
+# REVIEW: This was downgraded to be python 3.10 compliant, this requires
+#         TypeAlias and Dict
+# type Result = dict[str, Any]  # Analysis result for code complexity
+Result: TypeAlias = dict[str, Any]
 
 
 # -- Functions ------------------------------------------------------------------
+
+
 def complexity(func: Callable[P, R]) -> float:
     """
     Calculate cyclomatic complexity using AST analysis
@@ -101,7 +109,8 @@ def antipatterns(func: Callable[P, R]) -> Result:
 
         # recursively process nodes
         for child in children:
-            child_depth, child_conditionals = depth(child, acc + 1)
+            # acc will have had its +1 added above if it needs it
+            child_depth, child_conditionals = depth(child, acc)
             acc = max(acc, child_depth)
             nested += child_conditionals
 
@@ -172,13 +181,13 @@ def copilot(
             # logging
             if log_file:
                 with open(log_file, "a") as f:
-                    f.write(f"Function: {func.__name__}")
-                    f.write(f"Complexity: {cycles}")
+                    f.write(f"\nFunction: {func.__name__} | ")
+                    f.write(f"Complexity: {cycles} | ")
                     f.write(f"Anti-patterns: {anti_patterns}")
 
             # runtime warning
             warnings.warn(
-                "\n\n⚠ NOTICE: This function was generated or assisted by an AI. Review your outputs thoroughly and do not use in production. ⚠\n",
+                "\n\n⚠ NOTICE: This function was generated or assisted by an AI. Review your outputs thoroughly and do not use in production. ⚠",
                 category=RuntimeWarning,
                 stacklevel=2,
             )
@@ -202,6 +211,7 @@ def copilot(
 """
 Example usage
 
+
 @copilot()
 def example(x: int, y: int) -> int:
     "Demo."
@@ -218,12 +228,30 @@ def example(x: int, y: int) -> int:
     return result
 
 
+@copilot(verbose=True, log_file="./log.txt")
+def example_(x: int, y: int) -> int:
+    "Demo."
+    result = 0
+    for _ in range(x):
+        if y:
+            result += y
+
+    return result
+
+
 if __name__ == "__main__":
     result = example(3, 5)
+    result_ = example_(3, 5)
 
     print(f"\nResult: {result}")
     print("\nFunction metadata:")
     print(f"    - Complexity: {example.complexity}")
     print(f"    - Anti-patterns: {example.anti_patterns}")
     print(f"    - System info: {example.system}")
+
+    print(f"\nResult: {result_}")
+    print("\nFunction metadata:")
+    print(f"    - Complexity: {example_.complexity}")
+    print(f"    - Anti-patterns: {example_.anti_patterns}")
+    print(f"    - System info: {example_.system}")
 """
