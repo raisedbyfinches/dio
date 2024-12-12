@@ -1,3 +1,6 @@
 # Project related
 .direnv
 .venv
+
+# Python things
+__pycache__/
