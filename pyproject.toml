@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "dio"
+version = "0.1.0"
+description = "Python package for branding and working with AI generated code"
+authors = ["raisedbyfinches"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

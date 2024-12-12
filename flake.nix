@@ -43,7 +43,6 @@
             pkgs.python312
             pkgs.poetry
             pkgs.python312Packages.python-lsp-ruff
-            pkgs.python312Packages.ipython
           ];
         };
       }
