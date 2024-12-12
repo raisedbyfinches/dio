@@ -3,6 +3,53 @@
 -*- Minimum python version: 3.12
 
 Decorators and functions to wrap code written by or with LLM support.
+
+# Example usage
+
+```{python}
+@copilot()
+def example(x: int, y: int) -> int:
+    "Demo."
+    result = 0
+    for _ in range(x):
+        if y > 0:
+            if y < 10:
+                result += y
+            else:
+                result *= y
+        else:
+            result -= y
+
+    return result
+
+
+@copilot(verbose=True, log_file="./log.txt")
+def example_(x: int, y: int) -> int:
+    "Demo."
+    result = 0
+    for _ in range(x):
+        if y:
+            result += y
+
+    return result
+
+
+if __name__ == "__main__":
+    result = example(3, 5)
+    result_ = example_(3, 5)
+
+    print(f"\nResult: {result}")
+    print("\nFunction metadata:")
+    print(f"    - Complexity: {example.complexity}")
+    print(f"    - Anti-patterns: {example.anti_patterns}")
+    print(f"    - System info: {example.system}")
+
+    print(f"\nResult: {result_}")
+    print("\nFunction metadata:")
+    print(f"    - Complexity: {example_.complexity}")
+    print(f"    - Anti-patterns: {example_.anti_patterns}")
+    print(f"    - System info: {example_.system}")
+```
 """
 
 # -- Libraries ------------------------------------------------------------------
@@ -30,7 +77,7 @@ R = TypeVar("R")
 
 # REVIEW: This was downgraded to be python 3.10 compliant, this requires
 #         TypeAlias and Dict
-# type Result = dict[str, Any]  # Analysis result for code complexity
+# type Result = dict[str, Any]  # Analysis result for code complexity [3.12+]
 Result: TypeAlias = dict[str, Any]
 
 
@@ -206,52 +253,3 @@ def copilot(
         return wrapper
 
     return decorator
-
-
-"""
-Example usage
-
-
-@copilot()
-def example(x: int, y: int) -> int:
-    "Demo."
-    result = 0
-    for _ in range(x):
-        if y > 0:
-            if y < 10:
-                result += y
-            else:
-                result *= y
-        else:
-            result -= y
-
-    return result
-
-
-@copilot(verbose=True, log_file="./log.txt")
-def example_(x: int, y: int) -> int:
-    "Demo."
-    result = 0
-    for _ in range(x):
-        if y:
-            result += y
-
-    return result
-
-
-if __name__ == "__main__":
-    result = example(3, 5)
-    result_ = example_(3, 5)
-
-    print(f"\nResult: {result}")
-    print("\nFunction metadata:")
-    print(f"    - Complexity: {example.complexity}")
-    print(f"    - Anti-patterns: {example.anti_patterns}")
-    print(f"    - System info: {example.system}")
-
-    print(f"\nResult: {result_}")
-    print("\nFunction metadata:")
-    print(f"    - Complexity: {example_.complexity}")
-    print(f"    - Anti-patterns: {example_.anti_patterns}")
-    print(f"    - System info: {example_.system}")
-"""
