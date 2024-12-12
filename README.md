@@ -15,7 +15,7 @@ Don't for now. I'll bundle up all the different languages into branches later.
 
 ### Python
 
-Decorate your functions with `@copilot`. This is explicitly copilot as that's the tool available in a work setting for me. Other LLM origins are not supported *yet*.
+Import copilot from decorators.py and decorate your functions with `@copilot`. This is explicitly copilot as that's the tool available in my work setting. Other LLM origins are not supported *yet*.
 
 This provides:
 
