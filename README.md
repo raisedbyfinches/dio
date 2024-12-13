@@ -17,9 +17,11 @@ Each language's tools will live on their own branches. To install them use the i
 
 ### Python
 
-I recommend managing `dio` as a dependency using [poetry](https://python-poetry.org/) or [uv](https://docs.astral.sh/uv/). You can add it to your project dependencies using
+I recommend managing `dio` as a dependency using [poetry](https://python-poetry.org/) or [uv](https://docs.astral.sh/uv/). You can add it to your project dependencies using one of the following.
 
 #### Poetry
+
+Add it to your pyproject.toml with:
 
 ``` toml
 [tool.poetry.dependencies]
@@ -28,13 +30,11 @@ dio = { git = "https://github.com/raisedbyfinches/dio.git", branch = "python" }
 
 #### uv
 
-You can add the package to your dependencies list using command line via
+Install it using the CLI:
 
 ```sh
 uv pip install "git+https://github.com/raisedbyfinches/dio"
 ```
-
-If this is not available, wheels and tar.gz archives will be distributed under releases.
 
 
 ## Usage
