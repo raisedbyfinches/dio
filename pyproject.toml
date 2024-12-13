@@ -1,15 +1,17 @@
-[tool.poetry]
+[project]
 name = "dio"
 version = "0.1.0"
 description = "Python package for branding and working with AI generated code"
-authors = ["raisedbyfinches"]
-license = "MIT"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.10"
-
+requires-python = ">=3.10"
+dependencies = []
+license = "MIT"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.6.7",
+]
