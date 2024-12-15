@@ -5,3 +5,6 @@
 # Python things
 __pycache__/
 dist/
+
+# Test suite cruft
+.hypothesis
