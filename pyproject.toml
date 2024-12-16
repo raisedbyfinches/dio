@@ -7,6 +7,14 @@ requires-python = ">=3.10"
 dependencies = []
 license = "MIT"
 
+[tool.uv.sources]
+dio = { workspace = true }
+
+
+[tool.uv.workspace]
+members = ["."]
+exclude = [".direnv"]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
