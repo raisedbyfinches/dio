@@ -25,7 +25,7 @@ dio = { git = "https://github.com/raisedbyfinches/dio.git", branch = "python" }
 Install it using the CLI:
 
 ```sh
-uv pip install "git+https://github.com/raisedbyfinches/dio"
+uv pip install "git+https://github.com/raisedbyfinches/dio@python"
 ```
 
 
