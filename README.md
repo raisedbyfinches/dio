@@ -9,10 +9,6 @@ This is (currently: will be) a repository of useful functions and tools for work
 
 ## Installation
 
-Don't for now. I'll bundle up all the different languages into branches later.
-
-## Installation
-
 Each language's tools will live on their own branches. To install them use the instructions below.
 
 ### Python
