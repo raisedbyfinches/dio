@@ -94,11 +94,13 @@ This is included as a standalone file in `example.py` if you would like to tinke
 
 This is explicitly copilot as that's the tool available in my work setting. Other LLM origins are not supported *yet*.
 
-The `@copilot` decorator provides:
+## The `@copilot` decorator
 
+This provides
 - A warning that a function call is using a function which was written with or by Microsoft Copilot, including the function call itself.
 - Attributes to the function itself to better frame your questions when investigating the content.
   + Code complexity (via cyclomatic complexity computation)
   + Identification of long line and deeply nested (list + conditional) anti-patterns
   + System information for the system on which the function is called
 
+However, this doesn't come for free. There are performance implications of calculation the metrics. There is LRU caching mechanism to ensure that the calculations only occur once. Any hit to performance depends on the code it is assessing. In particular, AST traversal can be costly in complex cases. If youre function is particularly deep or "branchy" then this can take more time than for less complicated functions. This is cached so that it only gets calculated at the definition site. Having copilot write a large number of your functions or particularly complex functions will thus impose a greater penalty on performance. It is still vital that these functions are demarkated as not written by humans.
