@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
-from dio import copilot
+from dio import ai
 
 
-@copilot(verbose=True)
+@ai(verbose=True)
 def add(x, y):
     return x + y
 
 
-@copilot()
+@ai()
 def example(x: int, y: int) -> int:
     "Demo."
     result = 0
@@ -24,7 +24,7 @@ def example(x: int, y: int) -> int:
     return result
 
 
-@copilot(verbose=True, log_file="./log.txt")
+@ai(verbose=True, log_file="./log.txt")
 def example_(x: int, y: int) -> int:
     "Demo."
     result = 0

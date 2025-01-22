@@ -147,17 +147,17 @@ def compatibility() -> Result:
     }
 
 
-def copilot(
-    verbose: bool = False, log_file: str | None = None
+def ai(
+        verbose: bool = False, log_file: str | None = None, llm: str = "copilot"
 ) -> Callable[[Callable[P, R]], Callable[P, R]]:
     """
     A hof for analysing and marking AI-generated functions.
 
     :param verbose (bool, optional): Enable detailed output. Default = False.
     :param log_file (str, optional): Path to log file. Default = None.
+    :param llm (str, optional): The LLM which supported the writing. Default = "copilot".
     :returns Callable: Decorated function with additional attributes.
     """
-
     def decorator(func: Callable[P, R]) -> Callable[P, R]:
         @functools.wraps(func)
         @functools.lru_cache(maxsize=None)
@@ -202,6 +202,7 @@ def copilot(
         wrapper.anti_patterns = antipatterns(func)
         wrapper.system = compatibility()
         wrapper.is_ai_generated = True
+        wrapper.ai = llm
 
         return wrapper
 

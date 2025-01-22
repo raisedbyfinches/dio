@@ -113,7 +113,7 @@
         # The notable difference is that we also apply another overlay here enabling editable mode ( https://setuptools.pypa.io/en/latest/userguide/development_mode.html ).
         #
         # This means that any changes done to your local files do not require a rebuild.
-        uv2nix =
+        default =
           let
             # Create an overlay enabling editable mode for all local dependencies.
             editableOverlay = workspace.mkEditablePyprojectOverlay {

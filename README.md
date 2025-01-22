@@ -9,7 +9,15 @@ This is (currently: will be) a repository of useful functions and tools for work
 
 ## Installation
 
+<<<<<<< Updated upstream
 For python installation I recommend managing `dio` as a dependency using [poetry](https://python-poetry.org/) or [uv](https://docs.astral.sh/uv/). You can add it to your project dependencies using one of the following.
+=======
+Each language's tools will live on their own branches. To install them use the instructions below.
+
+### Python
+
+I recommend managing `dio` as a dependency using [poetry](https://python-poetry.org/) or [uv](https://docs.astral.sh/uv/). You can add it to your project dependencies using one of the following and then use that tool to install it.
+>>>>>>> Stashed changes
 
 #### Poetry
 
@@ -36,15 +44,15 @@ uv pip install "git+https://github.com/raisedbyfinches/dio@python"
 When developing code with Copilot assistance we should mark all code written by it. To do so follow this example and apply it to your own codebase.
 
 ``` python
-from dio import copilot
+from dio import ai
 
 
-@copilot(verbose=True)
+@ai(verbose=True)
 def add(x, y):
     return x + y
 
 
-@copilot()
+@ai(llm="claude")
 def example(x: int, y: int) -> int:
     "Demo."
     result = 0
@@ -60,7 +68,7 @@ def example(x: int, y: int) -> int:
     return result
 
 
-@copilot(verbose=True, log_file="./log.txt")
+@ai(verbose=True, log_file="./log.txt")
 def example_(x: int, y: int) -> int:
     "Demo."
     result = 0
@@ -92,15 +100,15 @@ if __name__ == "__main__":
 
 This is included as a standalone file in `example.py` if you would like to tinker with it.
 
-This is explicitly copilot as that's the tool available in my work setting. Other LLM origins are not supported *yet*.
+This is explicitly copilot as the default value as that's the tool available in my work setting. Other LLM origins are not supported *yet*.
 
-## The `@copilot` decorator
+The `@ai` decorator provides:
 
 This provides
 - A warning that a function call is using a function which was written with or by Microsoft Copilot, including the function call itself.
 - Attributes to the function itself to better frame your questions when investigating the content.
   + Code complexity (via cyclomatic complexity computation)
   + Identification of long line and deeply nested (list + conditional) anti-patterns
-  + System information for the system on which the function is called
+  + Information for the system on which the function is called
 
-However, this doesn't come for free. There are performance implications of calculation the metrics. There is LRU caching mechanism to ensure that the calculations only occur once. Any hit to performance depends on the code it is assessing. In particular, AST traversal can be costly in complex cases. If youre function is particularly deep or "branchy" then this can take more time than for less complicated functions. This is cached so that it only gets calculated at the definition site. Having copilot write a large number of your functions or particularly complex functions will thus impose a greater penalty on performance. It is still vital that these functions are demarkated as not written by humans.
+However, this doesn't come for free. There are performance implications of calculation the metrics. There is LRU caching mechanism to ensure that the calculations only occur once. Any hit to performance depends on the code it is assessing. In particular, AST traversal can be costly in complex cases. If your function is particularly deep or "branchy" then this can take more time than for less complicated functions. This is cached so that it only gets calculated at the definition site. Having an LLM write a large number of your functions or particularly complex functions will thus impose a greater penalty on performance. It is still vital that these functions are demarkated as not written by humans.

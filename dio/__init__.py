@@ -1,1 +1,1 @@
-from .decorators import copilot
+from .decorators import ai
