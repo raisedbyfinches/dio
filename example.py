@@ -8,7 +8,7 @@ def add(x, y):
     return x + y
 
 
-@ai()
+@ai(llm="claude")
 def example(x: int, y: int) -> int:
     "Demo."
     result = 0
@@ -45,9 +45,11 @@ if __name__ == "__main__":
     print(f"    - Complexity: {example.complexity}")
     print(f"    - Anti-patterns: {example.anti_patterns}")
     print(f"    - System info: {example.system}")
+    print(f"    - LLM used: {example.ai}")
 
     print(f"\nResult: {result_}")
     print("\nFunction metadata:")
     print(f"    - Complexity: {example_.complexity}")
     print(f"    - Anti-patterns: {example_.anti_patterns}")
     print(f"    - System info: {example_.system}")
+    print(f"    - LLM used: {example_.ai}")

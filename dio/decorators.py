@@ -187,7 +187,7 @@ def ai(
 
             # runtime warning
             warnings.warn(
-                "\n\n⚠ NOTICE: This function was generated or assisted by an AI. Review your outputs thoroughly and do not use in production. ⚠",
+                "\n\n⚠ NOTICE: This function was generated or assisted by an AI. Review your outputs thoroughly and do not use in production. ⚠\n",
                 category=RuntimeWarning,
                 stacklevel=2,
             )
