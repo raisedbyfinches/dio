@@ -9,15 +9,7 @@ This is (currently: will be) a repository of useful functions and tools for work
 
 ## Installation
 
-<<<<<<< Updated upstream
 For python installation I recommend managing `dio` as a dependency using [poetry](https://python-poetry.org/) or [uv](https://docs.astral.sh/uv/). You can add it to your project dependencies using one of the following.
-=======
-Each language's tools will live on their own branches. To install them use the instructions below.
-
-### Python
-
-I recommend managing `dio` as a dependency using [poetry](https://python-poetry.org/) or [uv](https://docs.astral.sh/uv/). You can add it to your project dependencies using one of the following and then use that tool to install it.
->>>>>>> Stashed changes
 
 #### Poetry
 
